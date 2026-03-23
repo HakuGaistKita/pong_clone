@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cl8rqpte4553a"]
+
+[ext_resource type="PackedScene" uid="uid://dnpfu0tqx2toe" path="res://scenes/player.tscn" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://cgwmirg67yg2d" path="res://scripts/main.gd" id="1_tipki"]
+[ext_resource type="PackedScene" uid="uid://cb8et3gtn6p60" path="res://scenes/computer.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bc2kdkhjlxxx3" path="res://scenes/wall.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://b1c830pryhxbx" path="res://scenes/ball.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bw6mkw45ipcre" path="res://scenes/separator.tscn" id="5_tefeu"]
+[ext_resource type="Script" uid="uid://baflgrkxhic2b" path="res://scripts/separator.gd" id="6_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://dqlj1511tcfof" path="res://scenes/hud.tscn" id="7_o6xl0"]
+
+[node name="Main" type="Node" unique_id=1114445835]
+script = ExtResource("1_tipki")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1425522143]
+offset_right = 735.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 1)
+
+[node name="Player" parent="." unique_id=424029829 instance=ExtResource("1_sugp2")]
+position = Vector2(648, 321)
+
+[node name="Computer" parent="." unique_id=1860054966 instance=ExtResource("2_jyhfs")]
+position = Vector2(72, 320)
+
+[node name="Wall" parent="." unique_id=1891935482 instance=ExtResource("3_jyhfs")]
+
+[node name="ceiling" parent="." unique_id=1374845813 instance=ExtResource("3_jyhfs")]
+position = Vector2(0, -635)
+
+[node name="Separator" parent="." unique_id=1560229495 instance=ExtResource("5_tefeu")]
+script = ExtResource("6_o6xl0")
+
+[node name="Ball" parent="." unique_id=912083549 instance=ExtResource("3_tbgi4")]
+
+[node name="HUD" parent="." unique_id=1131802693 instance=ExtResource("7_o6xl0")]
+
+[node name="Start_Timer" type="Timer" parent="." unique_id=234237830]
+
+[connection signal="point_to_computer" from="Ball" to="." method="_on_ball_point_to_computer"]
+[connection signal="point_to_player" from="Ball" to="." method="_on_ball_point_to_player"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
+[connection signal="timeout" from="Start_Timer" to="." method="_on_start_timer_timeout"]

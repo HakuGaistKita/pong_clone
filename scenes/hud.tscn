@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dqlj1511tcfof"]
+
+[ext_resource type="FontFile" uid="uid://cf1fblyacg4lx" path="res://fonts/Xolonium-Regular.ttf" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://dfxmjf3u1hh0m" path="res://scripts/hud.gd" id="1_oo0fn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo0fn"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ysmq"]
+bg_color = Color(0.9207292, 0.93798465, 0.98764867, 1)
+
+[node name="HUD" type="CanvasLayer" unique_id=1131802693]
+script = ExtResource("1_oo0fn")
+
+[node name="player_score" type="Label" parent="." unique_id=95522809]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_right = 5.0
+offset_bottom = 78.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 37
+text = "0"
+
+[node name="computer_score" type="Label" parent="." unique_id=1071599681]
+offset_left = 16.0
+offset_right = 61.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 37
+text = "0"
+
+[node name="welcome_message" type="Label" parent="." unique_id=1494618672]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -11.5
+offset_right = 48.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 64
+text = "Pong Clone"
+
+[node name="start_button" type="Button" parent="." unique_id=1822303106]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.5
+offset_top = -203.0
+offset_right = 86.5
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_oo0fn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ysmq")
+text = "Start"
+
+[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
